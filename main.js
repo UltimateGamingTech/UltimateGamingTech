@@ -1,15 +1,20 @@
-// Custom Form Handling for UltimateGamingTech
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // Smooth Scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+    // Smooth Scroll ONLY for internal links (and NOT CTA buttons)
+    document.querySelectorAll('a[href^="#"]:not(.cta-button)').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
+
+});
 
     // Newsletter Subscription Simulation
     const subscribeForm = document.getElementById('subscribe-form');
